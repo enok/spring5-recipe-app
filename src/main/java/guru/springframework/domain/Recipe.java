@@ -1,17 +1,20 @@
 package guru.springframework.domain;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Created by enok on 22/06/2018
+ * Created by jt on 6/13/17.
  */
-@Data
+@Getter
+@Setter
 @Entity
 public class Recipe {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -40,7 +43,7 @@ public class Recipe {
 
     @ManyToMany
     @JoinTable(name = "recipe_category",
-            joinColumns = @JoinColumn(name = "recipe_id"),
+        joinColumns = @JoinColumn(name = "recipe_id"),
             inverseJoinColumns = @JoinColumn(name = "category_id"))
     private Set<Category> categories = new HashSet<>();
 
@@ -51,9 +54,9 @@ public class Recipe {
         }
     }
 
-    public Recipe addIngredient(Ingredient ingredient) {
+    public Recipe addIngredient(Ingredient ingredient){
         ingredient.setRecipe(this);
-        ingredients.add(ingredient);
+        this.ingredients.add(ingredient);
         return this;
     }
 }

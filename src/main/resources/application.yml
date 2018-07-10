@@ -8,6 +8,6 @@ logging:
     max-history: 30
   level:
     guru.springframework: DEBUG
-#    org.springframework.*: ERROR
+#    org.guru.springframework.*: ERROR
 #    org.hibernate.*: ERROR
-#    guru.springframework: DEBUG
+#    guru.guru.springframework: DEBUG

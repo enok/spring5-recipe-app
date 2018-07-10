@@ -5,6 +5,7 @@ import guru.springframework.converters.RecipeCommandToRecipe;
 import guru.springframework.converters.RecipeToRecipeCommand;
 import guru.springframework.domain.Recipe;
 import guru.springframework.repositories.RecipeRepository;
+import guru.springframework.services.RecipeService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,36 +15,41 @@ import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.Assert.assertEquals;
 
+
 /**
- * Created by enok on 29/06/2018
+ * Created by jt on 6/21/17.
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class RecipeServiceIT {
-    private static final String NEW_DESCRIPTION = "New Description";
+
+    public static final String NEW_DESCRIPTION = "New Description";
 
     @Autowired
-    private RecipeService recipeService;
+    RecipeService recipeService;
+
     @Autowired
-    private RecipeRepository recipeRepository;
+    RecipeRepository recipeRepository;
+
     @Autowired
-    private RecipeCommandToRecipe recipeCommandToRecipe;
+    RecipeCommandToRecipe recipeCommandToRecipe;
+
     @Autowired
-    private RecipeToRecipeCommand recipeToRecipeCommand;
+    RecipeToRecipeCommand recipeToRecipeCommand;
 
     @Transactional
     @Test
-    public void testSaveOfDescription() {
-        // given
+    public void testSaveOfDescription() throws Exception {
+        //given
         Iterable<Recipe> recipes = recipeRepository.findAll();
         Recipe testRecipe = recipes.iterator().next();
         RecipeCommand testRecipeCommand = recipeToRecipeCommand.convert(testRecipe);
 
-        // when
+        //when
         testRecipeCommand.setDescription(NEW_DESCRIPTION);
         RecipeCommand savedRecipeCommand = recipeService.saveRecipeCommand(testRecipeCommand);
 
-        // then
+        //then
         assertEquals(NEW_DESCRIPTION, savedRecipeCommand.getDescription());
         assertEquals(testRecipe.getId(), savedRecipeCommand.getId());
         assertEquals(testRecipe.getCategories().size(), savedRecipeCommand.getCategories().size());

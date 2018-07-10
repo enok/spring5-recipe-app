@@ -1,12 +1,12 @@
 package guru.springframework.repositories;
 
 import guru.springframework.domain.UnitOfMeasure;
+import guru.springframework.repositories.UnitOfMeasureRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Optional;
@@ -14,30 +14,33 @@ import java.util.Optional;
 import static org.junit.Assert.assertEquals;
 
 /**
- * Created by enok on 27/06/2018
+ * Created by jt on 6/17/17.
  */
 @RunWith(SpringRunner.class)
 @DataJpaTest
 public class UnitOfMeasureRepositoryIT {
+
     @Autowired
-    private UnitOfMeasureRepository unitOfMeasureRepository;
+    UnitOfMeasureRepository unitOfMeasureRepository;
 
     @Before
     public void setUp() throws Exception {
     }
 
     @Test
-//    @DirtiesContext re-instantiates spring context
-    public void findByDescription() {
+    public void findByDescription() throws Exception {
+
         Optional<UnitOfMeasure> uomOptional = unitOfMeasureRepository.findByDescription("Teaspoon");
 
         assertEquals("Teaspoon", uomOptional.get().getDescription());
     }
 
     @Test
-    public void findByDescriptionCup() {
+    public void findByDescriptionCup() throws Exception {
+
         Optional<UnitOfMeasure> uomOptional = unitOfMeasureRepository.findByDescription("Cup");
 
         assertEquals("Cup", uomOptional.get().getDescription());
     }
+
 }

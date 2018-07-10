@@ -1,5 +1,6 @@
 package guru.springframework.controllers;
 
+import guru.springframework.controllers.IndexController;
 import guru.springframework.domain.Recipe;
 import guru.springframework.services.RecipeService;
 import org.junit.Before;
@@ -22,15 +23,17 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 /**
- * Created by enok on 26/06/2018
+ * Created by jt on 6/17/17.
  */
 public class IndexControllerTest {
-    @Mock
-    private RecipeService recipeService;
-    @Mock
-    private Model model;
 
-    private IndexController controller;
+    @Mock
+    RecipeService recipeService;
+
+    @Mock
+    Model model;
+
+    IndexController controller;
 
     @Before
     public void setUp() throws Exception {
@@ -49,27 +52,31 @@ public class IndexControllerTest {
     }
 
     @Test
-    public void getIndexPage() {
-        // given
+    public void getIndexPage() throws Exception {
+
+        //given
         Set<Recipe> recipes = new HashSet<>();
         recipes.add(new Recipe());
 
         Recipe recipe = new Recipe();
         recipe.setId(1L);
+
         recipes.add(recipe);
 
         when(recipeService.getRecipes()).thenReturn(recipes);
 
         ArgumentCaptor<Set<Recipe>> argumentCaptor = ArgumentCaptor.forClass(Set.class);
 
-        // when
+        //when
         String viewName = controller.getIndexPage(model);
 
-        // then
+
+        //then
         assertEquals("index", viewName);
         verify(recipeService, times(1)).getRecipes();
         verify(model, times(1)).addAttribute(eq("recipes"), argumentCaptor.capture());
         Set<Recipe> setInController = argumentCaptor.getValue();
         assertEquals(2, setInController.size());
     }
+
 }

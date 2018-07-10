@@ -4,6 +4,7 @@ import guru.springframework.commands.CategoryCommand;
 import guru.springframework.commands.IngredientCommand;
 import guru.springframework.commands.NotesCommand;
 import guru.springframework.commands.RecipeCommand;
+import guru.springframework.converters.*;
 import guru.springframework.domain.Difficulty;
 import guru.springframework.domain.Recipe;
 import org.junit.Before;
@@ -33,8 +34,8 @@ public class RecipeCommandToRecipeTest {
     @Before
     public void setUp() throws Exception {
         converter = new RecipeCommandToRecipe(new CategoryCommandToCategory(),
-                new IngredientCommandToIngredient(new UnitOfMeasureCommandToUnitOfMeasure()),
-                new NotesCommandToNotes());
+                                              new IngredientCommandToIngredient(new UnitOfMeasureCommandToUnitOfMeasure()),
+                                              new NotesCommandToNotes());
     }
 
     @Test

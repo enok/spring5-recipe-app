@@ -6,8 +6,9 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.Optional;
 
 /**
- * Created by enok on 22/06/2018
+ * Created by jt on 6/13/17.
  */
 public interface UnitOfMeasureRepository extends CrudRepository<UnitOfMeasure, Long> {
+
     Optional<UnitOfMeasure> findByDescription(String description);
 }

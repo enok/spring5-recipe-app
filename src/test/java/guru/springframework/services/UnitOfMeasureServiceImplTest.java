@@ -4,6 +4,8 @@ import guru.springframework.commands.UnitOfMeasureCommand;
 import guru.springframework.converters.UnitOfMeasureToUnitOfMeasureCommand;
 import guru.springframework.domain.UnitOfMeasure;
 import guru.springframework.repositories.UnitOfMeasureRepository;
+import guru.springframework.services.UnitOfMeasureService;
+import guru.springframework.services.UnitOfMeasureServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -16,11 +18,12 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
 public class UnitOfMeasureServiceImplTest {
-    private UnitOfMeasureToUnitOfMeasureCommand unitOfMeasureToUnitOfMeasureCommand = new UnitOfMeasureToUnitOfMeasureCommand();
-    private UnitOfMeasureService service;
+
+    UnitOfMeasureToUnitOfMeasureCommand unitOfMeasureToUnitOfMeasureCommand = new UnitOfMeasureToUnitOfMeasureCommand();
+    UnitOfMeasureService service;
 
     @Mock
-    private UnitOfMeasureRepository unitOfMeasureRepository;
+    UnitOfMeasureRepository unitOfMeasureRepository;
 
     @Before
     public void setUp() throws Exception {

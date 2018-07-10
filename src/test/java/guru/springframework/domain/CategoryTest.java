@@ -1,36 +1,38 @@
 package guru.springframework.domain;
 
+import guru.springframework.domain.Category;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
- * Created by enok on 26/06/2018
+ * Created by jt on 6/17/17.
  */
 public class CategoryTest {
 
-    private Category category;
+    Category category;
 
     @Before
-    public void setUp() {
+    public void setUp(){
         category = new Category();
     }
 
     @Test
-    public void getId() {
-        Long id = 4L;
+    public void getId() throws Exception {
+        Long idValue = 4L;
 
-        category.setId(id);
+        category.setId(idValue);
 
-        assertEquals(id, category.getId());
+        assertEquals(idValue, category.getId());
     }
 
     @Test
-    public void getDescription() {
+    public void getDescription() throws Exception {
     }
 
     @Test
-    public void getRecipes() {
+    public void getRecipes() throws Exception {
     }
+
 }
