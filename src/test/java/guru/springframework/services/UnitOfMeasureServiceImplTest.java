@@ -4,8 +4,6 @@ import guru.springframework.commands.UnitOfMeasureCommand;
 import guru.springframework.converters.UnitOfMeasureToUnitOfMeasureCommand;
 import guru.springframework.domain.UnitOfMeasure;
 import guru.springframework.repositories.UnitOfMeasureRepository;
-import guru.springframework.services.UnitOfMeasureService;
-import guru.springframework.services.UnitOfMeasureServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;

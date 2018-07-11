@@ -1,7 +1,6 @@
 package guru.springframework.converters;
 
 import guru.springframework.commands.NotesCommand;
-import guru.springframework.converters.NotesCommandToNotes;
 import guru.springframework.domain.Notes;
 import org.junit.Before;
 import org.junit.Test;

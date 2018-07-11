@@ -2,8 +2,6 @@ package guru.springframework.services;
 
 import guru.springframework.domain.Recipe;
 import guru.springframework.repositories.RecipeRepository;
-import guru.springframework.services.ImageService;
-import guru.springframework.services.ImageServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
@@ -15,7 +13,6 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.Optional;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.*;
 
 
@@ -38,7 +35,7 @@ public class ImageServiceImplTest {
         //given
         Long id = 1L;
         MultipartFile multipartFile = new MockMultipartFile("imagefile", "testing.txt", "text/plain",
-                                                            "Spring Framework Guru".getBytes());
+                "Spring Framework Guru".getBytes());
 
         Recipe recipe = new Recipe();
         recipe.setId(id);
